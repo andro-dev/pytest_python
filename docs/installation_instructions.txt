@@ -1,0 +1,42 @@
+1) Install uv
+
+curl -Ls https://astral.sh/uv/install.sh | sh
+uv --version
+
+
+2) Create a new project
+
+mkdir <project-directory>
+cd <project-directory>
+uv init
+
+
+3) Add Playwright + pytest dependencies
+Playwright’s Python docs recommend the official Playwright Pytest plugin for end-to-end tests. Add both as development dependencies:
+
+uv add --dev pytest pytest-playwright
+
+
+4) Install browser binaries
+After installing the Python packages, install the Playwright browsers:
+
+uv run playwright install
+
+
+
+
+5) Create a first test
+Make a file tests/test_homepage.py:
+
+from playwright.sync_api import Page, expect
+
+def test_homepage_title(page: Page) -> None:
+    page.goto("https://playwright.dev")
+    expect(page).to_have_title("Fast and reliable end-to-end testing for modern web apps | Playwright")
+
+The Playwright Pytest plugin provides fixtures like page and is the recommended starting point for Python E2E tests.
+
+6) Run the tests
+uv run pytest
+
+Using uv run runs commands inside the project environment, and dev dependencies are available by default.
