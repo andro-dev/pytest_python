@@ -4,9 +4,11 @@ Here is how you configure a **pytest + Playwright** project specifically using *
      https://docs.astral.sh/uv/getting-started/installation/
 
 Use curl to download the script and execute it with sh:
+
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 or wget if you don't have curl
+
 wget -qO- https://astral.sh/uv/install.sh | sh
 
 ---
